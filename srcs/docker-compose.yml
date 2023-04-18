@@ -12,14 +12,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/edossan/data/wordpress
+      device: /home/edos-san/data/wordpress
   db:
     driver: local
     name: db
     driver_opts:
       type: none
       o: bind
-      device: /home/edossan/data/mariadb
+      device: /home/edos-san/data/mariadb
 
 services:
   mariadb:
