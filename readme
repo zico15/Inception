@@ -1,0 +1,5 @@
+mariadb -u edos-san -p
+SHOW DATABASES;
+use mydatabase;
+show tables;
+SELECT * FROM wp_users;
