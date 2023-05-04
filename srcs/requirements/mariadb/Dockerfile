@@ -1,13 +1,15 @@
-FROM debian:buster
+# versao 10
+FROM debian:buster-slim
 
-RUN apt-get update
-RUN apt-get install -y mariadb-server
+RUN apt update \
+    && apt install mariadb-server procps -y
 
-EXPOSE 3306
+COPY ./tools/script.sh .
 
-COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-COPY ./tools /var/www/
+COPY ./tools/db_script.sql /etc/mysql/conf.d/
 
-RUN service mysql start && mysql < /var/www/initial_db.sql && rm -f /var/www/initial_db.sql;
+RUN chmod +x /script.sh
 
-CMD ["mysqld"]
+WORKDIR /var/lib/mysql
+
+ENTRYPOINT ["bash", "-c", "/script.sh"]
