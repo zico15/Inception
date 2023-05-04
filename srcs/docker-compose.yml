@@ -64,3 +64,4 @@ volumes:
 
 networks:
   inception_network:
+    name: inception
